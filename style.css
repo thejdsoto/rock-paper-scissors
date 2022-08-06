@@ -1,0 +1,27 @@
+html, body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.main {
+    display: flex;
+    width: 800px;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    border: 1px solid blue;
+    border-radius: 15px;
+    margin: 8px;
+    padding: 8px;
+    height: 50%;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+}
