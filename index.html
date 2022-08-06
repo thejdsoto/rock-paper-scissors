@@ -1,5 +1,45 @@
 <!DOCTYPE html>
-
-<head>
-  <script src="script.js"></script>
-</head>
+<html>
+  <head>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>ROCK PAPER SCISSORS GAME</title>
+  </head>
+  <body>
+    <header>
+      <h1>ROCK PAPERS SCISSORS GAME</h1>
+    </header>
+    <div class="round">
+      <h2 id="round-number">Round #0</h2>
+    </div>
+    <div class="main">
+      <div class="container">
+        <div class="player-score">
+          <p id="player-score">Player Score: 0</p>
+        </div>
+        <button type="button" value="ROCK">Rock</button>
+        <button type="button" value="PAPER">Paper</button>
+        <button type="button" value="SCISSORS">Scissors</button>
+        <div class="player-choice">
+          <p id="player-choice"></p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="computer-score">
+          <p id="computer-score">Computer Score: 0</p>
+        </div>
+        <h3>Computer picks...</h3>
+        <p id="computer-choice"></p>
+      </div>
+    </div>
+    <div class="result">
+      <p id="result"></p>
+      <p id="winner"></p>
+    </div>
+  </body>
+  <footer>
+    <div class="footer">
+      <p>Created by John David Soto</p>
+    </div>
+  </footer>
+</html>
