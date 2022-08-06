@@ -1,4 +1,13 @@
 # rock-paper-scissors
+06 August 2022
+
+This is my first major revision for this little toy/project. Since I have learned the basics of DOM manipulation, I created a simple UI for this rock-paper-scissors game. It can now be played through the browser by clicking certain buttons for player choices then the browser will tally and display scores from user and computer sides, then display the winner per round and the grand winner (race to 5 points).
+
+The UI looks pretty bad and definitely needs heavy improvement. My JS code also looks very long and coded very bad, but I will refactor this from time to time.
+
+Love lots,
+David
+-----
 
 31 July 2022
 
