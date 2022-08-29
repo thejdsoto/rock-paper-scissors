@@ -4,6 +4,10 @@
 Came back to this toy project after three weeks since I shifted studying material to FSO 2022 but then decided to go back to my TOP course since I think I still lack skills in my JavaScript fundamentals. I will finish TOP JS path first before jumping to FSO 2022.
 
 For this update version, I have added some things in the UI like color, some images, and some HTML and CSS restructuring. I also have refactored the JavaScript code into a more readable one but still same functionality and features. Code still looks messy IMHO.
+
+Love lots, 
+David
+
 -----
 
 06 August 2022
@@ -14,6 +18,7 @@ The UI looks pretty bad and definitely needs heavy improvement. My JS code also 
 
 Love lots,
 David
+
 -----
 
 31 July 2022
