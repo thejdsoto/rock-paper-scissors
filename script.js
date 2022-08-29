@@ -6,6 +6,7 @@ function printScore() {
   document.getElementById("player-score").innerHTML = `Player Score: ${playerScore}`;
   document.getElementById("computer-score").innerHTML = `Computer Score: ${computerScore}`;
 }
+
 // Get computer choice
 function getComputerChoice() {
   // Randomize computer choice from rock, paper, scissors
@@ -23,10 +24,26 @@ function getComputerChoice() {
   }
 }
 
-function playRound(playerChoice, computerChoice) {
-  //initialize playerScore and computerScore
-  document.getElementById("player-choice").innerHTML = `Player choice is ${playerChoice}`;
-  document.getElementById("computer-choice").innerHTML = `Computer choice is ${computerChoice}`;
+
+function displayChoice (playerChoice, computerChoice) {
+  if (playerChoice === "ROCK") {
+    document.getElementById("player-choice").innerHTML = `<p>Player choice is</p><p> ${playerChoice}</p><img src="rock.jpg" alt="ROCK" width="300" height="300">`;
+  } else if (playerChoice === "PAPER") {
+    document.getElementById("player-choice").innerHTML = `<p>Player choice is</p><p> ${playerChoice}</p><img src="paper.jpg" alt="PAPER" width="300" height="300">`;
+  } else {
+    document.getElementById("player-choice").innerHTML = `<p>Player choice is</p><p> ${playerChoice}</p><img src="scissors.jpg" alt="SCISSORS" width="300" height="300">`;
+  }
+
+  if (computerChoice === "ROCK") {
+    document.getElementById("computer-choice").innerHTML = `<p>Computer choice is</p><p> ${computerChoice}</p></p><img src="rock.jpg" alt="ROCK" width="300" height="300">`;
+  } else if (computerChoice === "PAPER") {
+    document.getElementById("computer-choice").innerHTML = `<p>Computer choice is</p><p> ${computerChoice}</p><img src="paper.jpg" alt="PAPER" width="300" height="300">`;
+  } else {
+    document.getElementById("computer-choice").innerHTML = `<p>Computer choice is</p><p> ${computerChoice}</p><img src="scissors.jpg" alt="SCISSORS" width="300" height="300">`;
+  }
+}
+
+function displayWinner (playerChoice, computerChoice) {
   // Check user versus computer choice
   if (playerChoice === "ROCK" && computerChoice === "PAPER") {
     computerScore++;
@@ -56,6 +73,11 @@ function playRound(playerChoice, computerChoice) {
     // Same choices means tie, therefore no winner
     document.getElementById("result").innerHTML = "Draw!";
   }
+}
+
+function playRound(playerChoice, computerChoice) {
+  displayChoice(playerChoice, computerChoice);
+  displayWinner(playerChoice, computerChoice);
   checkScore();
 }
 
