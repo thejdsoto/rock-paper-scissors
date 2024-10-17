@@ -25,19 +25,69 @@ Write the logic to play the entire game
     Move your playRound function and score variables so that they are declared inside of the new playGame funtion
     Play 5 rounds by calling playRound 5 times
 */
+let humanScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
     let computerChoice = ["Rock", "Paper", "Scissors"];
     let randomNum = Math.floor(Math.random() * 3);
-    console.log("Computer picks " + computerChoice[randomNum]);
+    // console.log("The computer picked " + computerChoice[randomNum]);
     return computerChoice[randomNum];
 }
 
 function getHumanChoice() {
     let humanChoice = prompt("Select: Rock/Paper/Scissors");
-    console.log("The human picks " + humanChoice);
+    // console.log("The human picked " + humanChoice);
     return humanChoice;
 }
 
-getHumanChoice();
-getComputerChoice();
+function playRound(humanChoice, computerChoice) {
+    let humanChoiceUpperCase = humanChoice.toUpperCase();
+    let computerChoiceUpperCase = computerChoice.toUpperCase();
+
+    console.log("The human picked " + humanChoiceUpperCase);
+    console.log("The computer picked " + computerChoiceUpperCase);
+    // Scenarios where the computer wins
+    if (humanChoiceUpperCase === "ROCK" && computerChoiceUpperCase === "PAPER") {
+        console.log("The computer wins!");
+        computerScore++;
+    }
+
+    if (humanChoiceUpperCase === "PAPER" && computerChoiceUpperCase === "SCISSORS") {
+        console.log("The computer wins!");
+        computerScore++;
+    }
+
+    if (humanChoiceUpperCase === "SCISSORS" && computerChoiceUpperCase === "ROCK") {
+        console.log("The computer wins!");
+        computerScore++;
+    }
+
+    // Scenarios where the human wins
+    if (humanChoiceUpperCase === "ROCK" && computerChoiceUpperCase === "SCISSORS") {
+        console.log("The human wins!");
+        humanScore++;
+    }
+
+    if (humanChoiceUpperCase === "PAPER" && computerChoiceUpperCase === "ROCK") {
+        console.log("The human wins!");
+        humanScore++;
+    }
+
+
+    if (humanChoiceUpperCase === "SCISSORS" && computerChoiceUpperCase === "PAPER") {
+        console.log("The human wins!");
+        humanScore++;
+    }
+
+    // Draw
+    if (humanChoiceUpperCase === computerChoiceUpperCase) {
+        console.log(`It's a tie!`);
+    }
+
+    console.log(`Score -> Human: ${humanScore} points | | | | | Computer: ${computerScore} points`);    
+}
+
+let humanChoice = getHumanChoice();
+let computerChoice = getComputerChoice();
+playRound(humanChoice, computerChoice);
