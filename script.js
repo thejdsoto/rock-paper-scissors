@@ -29,8 +29,15 @@ Write the logic to play the entire game
 function getComputerChoice() {
     let computerChoice = ["Rock", "Paper", "Scissors"];
     let randomNum = Math.floor(Math.random() * 3);
-    console.log(computerChoice[randomNum]);
+    console.log("Computer picks " + computerChoice[randomNum]);
     return computerChoice[randomNum];
 }
 
+function getHumanChoice() {
+    let humanChoice = prompt("Select: Rock/Paper/Scissors");
+    console.log("The human picks " + humanChoice);
+    return humanChoice;
+}
+
+getHumanChoice();
 getComputerChoice();
