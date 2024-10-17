@@ -85,9 +85,27 @@ function playRound(humanChoice, computerChoice) {
         console.log(`It's a tie!`);
     }
 
+    if (humanChoiceUpperCase != "ROCK" && humanChoiceUpperCase != "PAPER" && humanChoiceUpperCase != "SCISSORS") {
+        console.log(`Invalid input! Please try again.`);
+    }
+
     console.log(`Score -> Human: ${humanScore} points | | | | | Computer: ${computerScore} points`);    
 }
 
-let humanChoice = getHumanChoice();
-let computerChoice = getComputerChoice();
-playRound(humanChoice, computerChoice);
+
+
+function playGame() {
+    while (humanScore < 5 && computerScore < 5) {
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice();
+        playRound(humanChoice, computerChoice);
+    }
+
+    if (humanScore === 5) {
+        console.log("The human reached 5 points first! Human wins.");
+    } else {
+        console.log("The computer reached 5 points first! Computer wins.");
+    }
+}
+
+playGame();
