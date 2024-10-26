@@ -1,5 +1,3 @@
-console.log("Hello world!");
-
 let humanScore = 0;
 let computerScore = 0;
 let humanChoice = "";
@@ -9,9 +7,11 @@ const scissors = document.querySelector("#scissors");
 const choiceContainer = document.querySelector("#choice");
 const resultContainer = document.querySelector("#result");
 const scoreContainer = document.querySelector("#score");
+const winnerContainer = document.querySelector("#winner");
 const choice = document.createElement("p");
 const result = document.createElement("p");
 const score = document.createElement("p");
+const winner = document.createElement("p");
 
 function getComputerChoice() {
     let computerChoice = ["ROCK", "PAPER", "SCISSORS"];
@@ -42,8 +42,35 @@ function appendScore(humanScore, computerScore) {
     scoreContainer.appendChild(score);
 }
 
-function playRound(humanChoice, computerChoice) { // Rock beats scissors, scissors beats paper, paper beats rock
+function appendWinner(player) {
+    if (player === "human") {
+        winner.innerText = `Human player first got to 5 points!`;
+        winnerContainer.appendChild(winner);
+    } else if (player === "computer") {
+        winner.innerText = `Computer player first got to 5 points!`;
+        winnerContainer.appendChild(winner);
+    } else {
+        winner.innerText = ``;
+        winnerContainer.appendChild(winner);    
+    }
+}
 
+function showWinner () {
+    if (humanScore === 5) {
+        appendWinner("human");
+        appendResult("human");
+        humanScore = 0;
+        computerScore = 0;
+    } else if (computerScore === 5) {
+        appendWinner("computer");
+        appendResult("computer");
+        humanScore = 0;
+        computerScore = 0;
+    }
+}
+
+function playRound(humanChoice, computerChoice) { // Rock beats scissors, scissors beats paper, paper beats rock
+    appendWinner();
     // Scenarios where the computer wins
     if (humanChoice === "ROCK" && computerChoice === "PAPER") {
         appendChoice(humanChoice, computerChoice);
@@ -102,6 +129,7 @@ rock.addEventListener("click", () => {
     result.innerText = "";
     humanChoice = "ROCK";
     playRound(humanChoice, getComputerChoice());
+    showWinner();
 });
 
 paper.addEventListener("click", () => {
@@ -109,6 +137,7 @@ paper.addEventListener("click", () => {
     result.innerText = "";
     humanChoice = "PAPER";
     playRound(humanChoice, getComputerChoice());
+    showWinner();
 });
 
 scissors.addEventListener("click", () => {
@@ -116,4 +145,5 @@ scissors.addEventListener("click", () => {
     result.innerText = "";
     humanChoice = "SCISSORS";
     playRound(humanChoice, getComputerChoice());
+    showWinner();
 });
