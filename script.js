@@ -8,8 +8,10 @@ const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 const choiceContainer = document.querySelector("#choice");
 const resultContainer = document.querySelector("#result");
-const result = document.createElement("p");
+const scoreContainer = document.querySelector("#score");
 const choice = document.createElement("p");
+const result = document.createElement("p");
+const score = document.createElement("p");
 
 function getComputerChoice() {
     let computerChoice = ["ROCK", "PAPER", "SCISSORS"];
@@ -22,78 +24,96 @@ function appendChoice(humanChoice, computerChoice) {
     choiceContainer.appendChild(choice);
 }
 
-function playRound(humanChoice, computerChoice) {
+function appendResult(winner) {
+    if (winner === "human") {
+        result.innerText = `HUMAN WINS!`;
+        resultContainer.appendChild(result);
+    } else if (winner === "computer") {
+        result.innerText = `COMPUTER WINS!`;
+        resultContainer.appendChild(result);
+    } else {
+        result.innerText = `IT'S A TIE!`;
+        resultContainer.appendChild(result);       
+    }
+}
+
+function appendScore(humanScore, computerScore) {
+    score.innerText = `Human: ${humanScore} <<<<< S C O R E >>>>> Computer: ${computerScore}`
+    scoreContainer.appendChild(score);
+}
+
+function playRound(humanChoice, computerChoice) { // Rock beats scissors, scissors beats paper, paper beats rock
 
     // Scenarios where the computer wins
     if (humanChoice === "ROCK" && computerChoice === "PAPER") {
         appendChoice(humanChoice, computerChoice);
+        appendResult("computer");
         computerScore++;
+        appendScore(humanScore, computerScore);
     }
 
     if (humanChoice === "PAPER" && computerChoice === "SCISSORS") {
         appendChoice(humanChoice, computerChoice);
         computerScore++;
+        appendResult("computer");
+        appendScore(humanScore, computerScore);
     }
 
     if (humanChoice === "SCISSORS" && computerChoice === "ROCK") {
         appendChoice(humanChoice, computerChoice);
         computerScore++;
+        appendResult("computer");
+        appendScore(humanScore, computerScore);
     }
 
     // Scenarios where the human wins
     if (humanChoice === "ROCK" && computerChoice === "SCISSORS") {
         appendChoice(humanChoice, computerChoice);
         humanScore++;
+        appendResult("human");
+        appendScore(humanScore, computerScore);
     }
 
     if (humanChoice === "PAPER" && computerChoice === "ROCK") {
         appendChoice(humanChoice, computerChoice);
         humanScore++;
+        appendResult("human");
+        appendScore(humanScore, computerScore);
     }
-
 
     if (humanChoice === "SCISSORS" && computerChoice === "PAPER") {
         appendChoice(humanChoice, computerChoice);
         humanScore++;
+        appendResult("human");
+        appendScore(humanScore, computerScore);
     }
 
     // Draw
     if (humanChoice === computerChoice) {
-        choice.innerText = `Human choice is ${humanChoice}. Computer choice is ${computerChoice}. It's a tie!`;
-        choiceContainer.appendChild(choice);
+        appendChoice(humanChoice, computerChoice);
+        appendResult("draw");
+        appendScore(humanScore, computerScore);
     }   
-
-    console.log(`Score -> Human: ${humanScore} points | | | | | Computer: ${computerScore} points`);    
 }
 
-// function playGame() {
-//     let humanChoice = getHumanChoice();
-//     let computerChoice = getComputerChoice();
-//     playRound(humanChoice, computerChoice);
-
-//     // if (humanScore === 5) {
-//     //     console.log("The human reached 5 points first! Human wins.");
-//     // } else {
-//     //     console.log("The computer reached 5 points first! Computer wins.");
-//     // }
-// }
-
-// playGame();
-
+// Event listeners for buttons
 rock.addEventListener("click", () => {
     choice.innerText = "";
+    result.innerText = "";
     humanChoice = "ROCK";
     playRound(humanChoice, getComputerChoice());
 });
 
 paper.addEventListener("click", () => {
     choice.innerText = "";
+    result.innerText = "";
     humanChoice = "PAPER";
     playRound(humanChoice, getComputerChoice());
 });
 
 scissors.addEventListener("click", () => {
     choice.innerText = "";
+    result.innerText = "";
     humanChoice = "SCISSORS";
     playRound(humanChoice, getComputerChoice());
 });
