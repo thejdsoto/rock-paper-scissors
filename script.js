@@ -2,7 +2,6 @@ console.log("Hello world!");
 
 let humanScore = 0;
 let computerScore = 0;
-let isStart = false;
 let humanChoice = "";
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
@@ -11,10 +10,6 @@ const choiceContainer = document.querySelector("#choice");
 const resultContainer = document.querySelector("#result");
 const result = document.createElement("p");
 const choice = document.createElement("p");
-
-// function getHumanChoice() {
-
-// }
 
 function getComputerChoice() {
     let computerChoice = ["ROCK", "PAPER", "SCISSORS"];
@@ -64,7 +59,7 @@ function playRound(humanChoice, computerChoice) {
 
     // Draw
     if (humanChoice === computerChoice) {
-        choice.innerText = "It's a tie!";
+        choice.innerText = `Human choice is ${humanChoice}. Computer choice is ${computerChoice}. It's a tie!`;
         choiceContainer.appendChild(choice);
     }   
 
